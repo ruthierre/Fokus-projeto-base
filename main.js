@@ -9,7 +9,9 @@ const BotaoPausePlay = document.querySelector('#start-pause span');
 const startEndStopButton = document.querySelector('#start-pause');
 const iconPausePlayButton = document.querySelector('.app__card-primary-butto-icon');
 const tempoTela = document.querySelector('#timer');
-const audioFoco = new Audio('./sons/luna-rise-part-one.mp3');
+const aumentarVolumeAudioFoco = document.querySelector('#aumentar-volume');
+const diminuirVolumeAudioFoco = document.querySelector('#diminuir-volume');
+let audioFoco = new Audio('./sons/luna-rise-part-one.mp3');
 const audioPlay = new Audio('./sons/play.wav');
 const audioPause = new Audio('./sons/pause.mp3');
 const audioBeep = new Audio('./sons/beep.mp3');
@@ -17,8 +19,9 @@ const audioBeep = new Audio('./sons/beep.mp3');
 let tempoDecorridoEmSegundos = 1500;
 let intervalId = null;
 
+let volume = audioFoco.volume = 0.1;
 audioFoco.loop = true;
-audioFoco.volume = 0.5;
+
 
 
 musicaInput.addEventListener('change', ()=> {
@@ -119,6 +122,26 @@ function exibirTempo() {
     const tempoFormatado = tempo.toLocaleTimeString('pt-br', {minute: '2-digit', second:'2-digit'});
     tempoTela.textContent = `${tempoFormatado}`;
 }
+
+
+// Função para aumentar o volume
+function aumentarVolume() {
+    if (audioFoco.volume < 1.0) {
+       audioFoco.volume = parseFloat(audioFoco.volume + 0.1).toFixed(1); // Aumenta o volume em 10%
+    }
+}
+
+// Função para diminuir o volume
+function diminuirVolume() {
+    if (audioFoco.volume > 0.0) {
+        audioFoco.volume = parseFloat(audioFoco.volume - 0.1).toFixed(1); // Diminui o volume em 10%
+        
+    }
+}
+
+// Adicione event listeners aos botões de aumentar e diminuir volume
+aumentarVolumeAudioFoco.addEventListener('click', aumentarVolume);
+diminuirVolumeAudioFoco.addEventListener('click', diminuirVolume);
 
 exibirTempo();
 

@@ -158,6 +158,30 @@ h1, h2, h3, h4, h5, h6 {
     gap: 1rem;
 }
 
+.app__card-primary-button-volume-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app__card-primary-volume-button {
+    padding: 0.8rem;
+    width: 5rem;
+    color: var(--color-secondary);
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+    border-radius: 3.2rem;
+    background: var(--linear-botes);
+    margin-top: 3.2rem;
+    margin-right: .5rem;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
 .app__footer {
     display: flex;
     width: 100%;
